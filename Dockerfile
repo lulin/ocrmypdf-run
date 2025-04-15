@@ -1,5 +1,5 @@
-# Use Alpine Linux 3.16 as the base image.
-FROM alpine:3.16
+# Use Alpine Linux 3.21 as the base image.
+FROM alpine:3.21
 
 # Install system dependencies:
 # - python3 and py3-pip: Essential for running Python and installing Python packages.
@@ -16,6 +16,7 @@ RUN apk add --no-cache \
     tesseract-ocr \
     tesseract-ocr-data-eng \
     tesseract-ocr-data-chi_sim \
+    tesseract-ocr-data-chi_tra \
     pngquant \
     unpaper \
     build-base \

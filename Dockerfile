@@ -11,7 +11,6 @@ FROM alpine:3.21
 RUN apk add --no-cache \
     ocrmypdf \
     python3 \
-    py3-pip \
     ghostscript \
     qpdf \
     tesseract-ocr \
@@ -21,22 +20,11 @@ RUN apk add --no-cache \
     pngquant \
     unpaper \
     build-base \
-    git
+    jbig2enc
 
 # Install OCRmyPDF using pip.
 # RUN pip3 install --no-cache-dir ocrmypdf
 
-# Clone, compile, and install jbig2enc:
-# - Clones the GitHub repository.
-# - Compiles the source code using 'make'.
-# - Copies the resulting binary to /usr/local/bin.
-# - Cleans up the temporary build directory.
-RUN git clone https://github.com/agl/jbig2enc /tmp/jbig2enc && \
-    cd /tmp/jbig2enc && \
-    make && \
-    cp jbig2enc /usr/local/bin/ && \
-    cd / && \
-    rm -rf /tmp/jbig2enc
 
 # Set the default entrypoint to OCRmyPDF so that any command-line arguments passed to the container are forwarded.
 ENTRYPOINT ["ocrmypdf"]

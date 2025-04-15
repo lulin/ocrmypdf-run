@@ -9,6 +9,7 @@ FROM alpine:3.21
 # - unpaper: For cleaning up scanned images.
 # - build-base and git: Needed for compiling software, including jbig2enc.
 RUN apk add --no-cache \
+    ocrmypdf \
     python3 \
     py3-pip \
     ghostscript \
@@ -23,7 +24,7 @@ RUN apk add --no-cache \
     git
 
 # Install OCRmyPDF using pip.
-RUN pip3 install --no-cache-dir ocrmypdf
+# RUN pip3 install --no-cache-dir ocrmypdf
 
 # Clone, compile, and install jbig2enc:
 # - Clones the GitHub repository.
